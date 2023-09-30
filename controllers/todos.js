@@ -1,8 +1,10 @@
-const todosRouter = require('express').Router()
-const Todo = require('../models/todo')
+const todosRouter = require('express').Router();
+const Todo = require('../models/todo');
 
-todosRouter.get('/', (request, response) => {
-  Todo.find({}).then(result => response.json(result)).catch(error => response.status(400).send(error.message))
-})
+todosRouter.get('/', (request, response, next) => {
+  Todo.find({})
+    .then((result) => response.json(result))
+    .catch((error) => next(error));
+});
 
-module.exports = todosRouter
+module.exports = todosRouter;
