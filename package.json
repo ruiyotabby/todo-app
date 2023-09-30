@@ -1,0 +1,32 @@
+{
+  "name": "todo-app",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "jest --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ruiyotabby/todo-app.git"
+  },
+  "author": "ruiyot",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ruiyotabby/todo-app/issues"
+  },
+  "homepage": "https://github.com/ruiyotabby/todo-app#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.5.3"
+  }
+}
