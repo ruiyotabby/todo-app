@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+import Icon from '@mdi/react';
+import { mdiMenu, mdiCloseThick } from '@mdi/js';
+import SideBar from './Components/SideBar';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [navBar, setNavBar] = useState(false);
 
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        { window.visualViewport.width >= 413 && <SideBar /> }
+        { window.visualViewport.width < 413
+          && <div>
+              <Icon
+                onClick={() => setNavBar(!navBar)}
+                className='hamburgSvg'
+                path={mdiMenu}
+                size={1}
+                rotate={navBar ? -90 : 0}
+              />
+              <ul className={`nav ${navBar ? 'show' : ''}`}>
+                <Icon onClick={() => setNavBar(!navBar)} className='closeSvg' path={mdiCloseThick} size={1} />
+                <SideBar />
+              </ul>
+            </div>
+        }
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className='body'>
+        <h2>Todo App</h2>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

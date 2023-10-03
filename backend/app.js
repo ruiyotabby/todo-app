@@ -17,6 +17,8 @@ mongoose.connect(URL)
   .catch((error) => console.error('error connecting to Mongodb: ', error.message));
 
 app.use(cors());
+app.use(express.static('build'));
+app.use(express.json());
 app.use('/api/todos', todosRouter);
 
 app.use(middleware.uknownEndpoint);
